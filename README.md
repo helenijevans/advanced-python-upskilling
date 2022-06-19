@@ -12,7 +12,7 @@ these concepts.
 - [ ] 6 - Logging
 - [ ] 7 - Comprehensions
 ___
-##Contents 
+## Contents 
 1. [Theory](#theory)
 2. [Python Concepts and When To Use Them](#python-concepts-and-when-to-use-them)
 
