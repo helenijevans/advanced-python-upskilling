@@ -1,11 +1,11 @@
 # Use lambdas as in-place functions
 # Otherwise it would needlessly increase code complexity and reduce readability
 
-def CelsisusToFahrenheit(temp):
+def CelsiusToFahrenheit(temp):
     return (temp * 9/5) + 32
 
 
-def FahrenheitToCelsisus(temp):
+def FahrenheitToCelsius(temp):
     return (temp-32) * 5/9
 
 

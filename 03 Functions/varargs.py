@@ -3,11 +3,6 @@
 
 # define a function that takes variable arguments
 def addition(*args):
-    # result = 0
-    # for arg in args:
-    #     result += arg
-    #
-    # return result
     return sum(args)
 
 

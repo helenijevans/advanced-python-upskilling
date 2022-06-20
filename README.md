@@ -6,19 +6,20 @@ these concepts.
 ### Current Progress
 - [x] 1 - Language
 - [x] 2 - Builtin Functions
-- [ ] 3 - Functions
+- [x] 3 - Functions
 - [ ] 4 - Collections
 - [ ] 5 - Classes
 - [ ] 6 - Logging
 - [ ] 7 - Comprehensions
 ___
 ## Contents 
-1. [Theory](#theory)
-2. [Python Concepts and When To Use Them](#python-concepts-and-when-to-use-them)
+1. [Theory](#theory-)
+2. [Best Practice](#best-practice-)
+3. [Python Concepts and When To Use Them](#python-concepts-and-when-to-use-them)
 
 ___
 
-### Theory
+### Theory 📖
 #### Truth Values
 Python objects majorly evaluate to True.
 
@@ -36,7 +37,46 @@ ___
 A function is a predicate function if it returns a Boolean value. This means a predicate function can be used to filter 
 and act as a conditional function.
 ___
-### Python Concepts and When To Use Them
+#### Anonymous Functions
+A function is an anonymous function if it was declared without an identifier. Therefore an anonymous function is not usable after it is created/used.
+___
+#### Arguments
+```python
+# use keyword-only arguments to help ensure code clarity
+def myFunction(arg1, arg2, *, suppressExceptions=False):
+    print(arg1, arg2, suppressExceptions) 
+
+# define a function that takes in a variable number of arguments
+def addition(*args):
+    return sum(args)
+```
+___
+
+### Best Practice 💯
+#### Docstrings
+- Docstrings always in triple quotes 
+- First line should be summary sentence of functionality 
+- For modules, list important classes, functions, exceptions 
+- For classes, list important methods 
+- For functions, list parameters and explains each, one per line 
+- If there's a return value, then list it; otherwise omit 
+- If the function raises exceptions, mention those
+
+
+```python
+"""
+myFunction(arg1, arg2=None) --> Doesn't really do anything special.
+
+Parameters:
+arg1: the first argument. Whatever you feel like passing.
+arg2: the second argument. Defaults to None. Whatever makes you happy.
+"""
+```
+
+
+
+___
+### Python Concepts and When To Use Them 📋
 
 
 <table>
@@ -217,6 +257,43 @@ def main():
     
     # all will return true only if all values are true
     print(all(list1))
+```
+</td>
+
+</tr>
+<tr>
+<td>lambda functions </td>
+<td>In-line anonymous function definitions</td>
+<td> 
+<ul>
+<li>When the function is only used once </li>
+<li>Function not extraordinarily complex </li>
+<li>To reduce complexity and increase readbility </li>
+</ul>
+</td>
+<td>
+
+```python
+def CelsiusToFahrenheit(temp):
+    return (temp * 9/5) + 32
+
+
+def FahrenheitToCelsius(temp):
+    return (temp-32) * 5/9
+
+
+def main():
+    ctemps = [0, 12, 34, 100]
+    ftemps = [32, 65, 100, 212]
+
+    # Use regular functions to convert temps
+    print(list(map(FahrenheitToCelsisus, ftemps)))
+    print(list(map(CelsisusToFahrenheit, ctemps)))
+
+    # Use lambdas to accomplish the same thing
+    print(list(map(lambda t: (t-32) * 5/9, ftemps)))
+    print(list(map(lambda t: (t * 9/5) + 32, ctemps)))
+
 ```
 </td>
 
