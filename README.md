@@ -445,20 +445,26 @@ def main():
 <td>
 
 ```python
-
-def main():
-    # create a Point namedtuple
-    Point = collections.namedtuple("Point", "x y z")
-
-    p1 = Point(10, 20, 5)
-    p2 = Point(30, 40, 0)
-
-    print(p1, p2)
-    print(p1.x, p1.y)
-
-    # use _replace to create a new instance => replace always needs to be assigned to a new instance
-    p1 = p1._replace(x=100)
-    print(p1)
+  from collections import OrderedDict
+  
+  
+  def main():
+      # list of sport teams with wins and losses
+      sportTeams = [("Royals", (18, 12)), ("Rockets", (24, 6)), 
+                  ("Cardinals", (20, 10)), ("Dragons", (22, 8)),
+                  ("Kings", (15, 15)), ("Chargers", (20, 10)), 
+                  ("Jets", (16, 14)), ("Warriors", (25, 5))]
+  
+      # sort the teams by number of wins
+      sortedTeams = sorted(sportTeams, key=lambda t: t[1][0], reverse=True)
+  
+      # create an ordered dictionary of the teams
+      teams = OrderedDict(sortedTeams)
+      print(teams)
+  
+      # Use popitem to remove the top item
+      tm, wl = teams.popitem(False)
+      print("Top team: ", tm, wl)
 ```
 </td>
 </tr>
