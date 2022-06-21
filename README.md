@@ -7,7 +7,7 @@ these concepts.
 - [x] 1 - Language
 - [x] 2 - Builtin Functions
 - [x] 3 - Functions
-- [ ] 4 - Collections
+- [x] 4 - Collections
 - [ ] 5 - Classes
 - [ ] 6 - Logging
 - [ ] 7 - Comprehensions
@@ -296,8 +296,174 @@ def main():
 
 ```
 </td>
-
 </tr>
+<tr>
+<td>Counter class </td>
+<td>Subclass of dictionary that allows counting of hashable objects</td>
+<td> 
+If you need a class to help keep track of a number of different items along with a set of operations for working on the data or multiple sets of data, the counter class is ideal. Most common seems like a usef
+</td>
+<td>
+
+```python
+from collections import Counter
+
+
+def main():
+    # list of students in class 1
+    class1 = ["Bob", "James", "Chad", "Darcy", "Penny", "Hannah"
+              "Kevin", "James", "Melanie", "Becky", "Steve", "Frank"]
+
+    # list of students in class 2
+    class2 = ["Bill", "Barry", "Cindy", "Debbie", "Frank",
+              "Gabby", "Kelly", "James", "Joe", "Sam", "Tara", "Ziggy"]
+
+    # Create a Counter for class1 and class2
+    c1 = Counter(class1)
+    c2 = Counter(class2)
+
+    # How many students in class 1 named James?
+    print(c1["James"])
+
+    # How many students are in class 1?
+    print(sum(c1.values()), "students in class 1")
+
+    # Combine the two classes
+    c1.update(class2)
+    print(sum(c1.values()), "students in class 1 and 2")
+
+    # What's the most common name in the two classes?
+    print(c1.most_common(3))
+
+    # Separate the classes again
+    c1.subtract(class2)
+    print(c1.most_common(1))
+
+    # What's common between the two classes?
+    print(c1 & c2)
+    # Performing a boolean AND operation. Aka outputting any values and their counts that are in both datasets.
+
+```
+</td>
+</tr>
+<tr>
+<td> DefaultDict </td>
+<td>Subclass of dictionary that creates keys aka no value can be without a key</td>
+<td> 
+If you don't care about what keys are, <b>Do not use if you need to know if you're missing a key.</b>
+</td>
+<td>
+
+```python
+from collections import defaultdict
+
+
+def main():
+    # define a list of items that we want to count
+    fruits = ['apple', 'pear', 'orange', 'banana',
+              'apple', 'grape', 'banana', 'banana']
+
+    # use a dictionary to count each element
+    fruitCounter = defaultdict(int)
+    # Inside the bracket (int) you put in a factory method
+    # This is how the default keys are chosen. This time using an integer
+    # You can also define your own factory methods e.g. a lambda function
+```
+</td>
+</tr>
+<tr>
+<td> Deque </td>
+<td>Double ended queues designed to be memory efficient when accessing it from either end</td>
+<td> 
+If you need to be able to operate and work with data from both sides of a list. e.g.: restaurant waiting list/reservations
+</td>
+<td>
+
+```python
+def main():
+    # initialise a deque with lowercase letters
+    d = collections.deque(string.ascii_lowercase)
+
+    # deques support the len() function
+    print("Item count: {}".format(len(d)))
+
+    # deques can be iterated over
+    for elem in d:
+        print(elem.upper(), end=",")
+
+    # manipulate items from either end
+    d.pop()  # removes last element of the queue
+    d.popleft()  # removes first element of the queue
+    d.append(2)  # adds X to the back of the queue
+    d.appendleft(1)  # adds X to the front of the queue
+    print(d)
+
+    # rotate the deque
+    print(d)
+    d.rotate()  # positive numbers rotate X numbers to right, negative X numbers to left -> default = 1
+    print(d)
+```
+</td>
+</tr>
+<tr>
+<td> namedtuple </td>
+<td>Tuples that are defined with parameters, allowing more readable access (instead of accessing by index)</td>
+<td> 
+When it is a simple data structure and defining a class would be too much work.
+<b>Do not use if you do not have default values, so if the data has large number of optional properties, better to use a class</b>
+</td>
+<td>
+
+```python
+
+def main():
+    # create a Point namedtuple
+    Point = collections.namedtuple("Point", "x y z")
+
+    p1 = Point(10, 20, 5)
+    p2 = Point(30, 40, 0)
+
+    print(p1, p2)
+    print(p1.x, p1.y)
+
+    # use _replace to create a new instance => replace always needs to be assigned to a new instance
+    p1 = p1._replace(x=100)
+    print(p1)
+```
+</td>
+</tr>
+<tr>
+<td> ordereddict </td>
+<td>The order of insertion into the dictionary is recorded</td>
+<td> 
+<ul>
+<li>Functionality relies on the order of the dictionary</li>
+<li>If you need to rearrange items in a dictionary then you can use .move_to_end() and also the enhanced variation of .popitem().</li>
+<li>If your code compares equality, and the order of items is important, then OrderedDict is the right choice.</li>
+</ul>
+</td>
+<td>
+
+```python
+
+def main():
+    # create a Point namedtuple
+    Point = collections.namedtuple("Point", "x y z")
+
+    p1 = Point(10, 20, 5)
+    p2 = Point(30, 40, 0)
+
+    print(p1, p2)
+    print(p1.x, p1.y)
+
+    # use _replace to create a new instance => replace always needs to be assigned to a new instance
+    p1 = p1._replace(x=100)
+    print(p1)
+```
+</td>
+</tr>
+
+</table>
 
 
 
