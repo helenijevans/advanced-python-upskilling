@@ -4,7 +4,7 @@ the concepts I've gained in this course. Next steps after finishing this, will b
 these concepts.
 
 ### Outstanding Question
-What actually is the benefit of using a lambda function over a comprehension?
+> What actually is the benefit of using a lambda function over a comprehension?
 ___
 ## Contents 
 1. [Theory](#theory-)
