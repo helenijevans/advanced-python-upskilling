@@ -2,21 +2,11 @@
 This markdown file serves to summarise and finalise the understanding of
 the concepts I've gained in this course. Next steps after finishing this, will be completing challenges utilising
 these concepts.
-
-### Current Progress
-- [x] 1 - Language
-- [x] 2 - Builtin Functions
-- [x] 3 - Functions
-- [x] 4 - Collections
-- [x] 5 - Classes
-- [x] 6 - Logging
-- [ ] 7 - Comprehensions
 ___
 ## Contents 
 1. [Theory](#theory-)
 2. [Best Practice](#best-practice-)
 3. [Python Concepts and When To Use Them](#python-concepts-and-when-to-use-them-)
-
 ___
 
 ### Theory 📖
@@ -50,6 +40,15 @@ def myFunction(arg1, arg2, *, suppressExceptions=False):
 def addition(*args):
     return sum(args)
 ```
+___
+#### Python list comprehension vs lambda
+Let us see the difference between Python list comprehension and lambda.
+
+- List comprehension is used to create a list.
+- Lambda function process is the same as other functions and returns the value of the list.
+- List comprehension is more human-readable than the lambda function.
+- User can easily understand where the list comprehension is used .
+- List comprehension performance is better than lambda because filter() in lambda is slower than list comprehension.
 ___
 
 ### Best Practice 💯
@@ -678,7 +677,28 @@ def main():
 ```
 </td>
 </tr>
+<tr>
+<td> Comprehensions </td>
+<td> A way to concisely apply a predicate function to an iterable</td>
+<td> 
+N/A
+</td>
+<td>
 
+```python
+## List comprehension
+oddSquared = [e ** 2 for e in odds if e > 3 and e < 17]
+
+## Dictionary comprehension
+# below 't: t*9/5' is creating a key value pair
+tempDict = {t: (t * 9/5) + 32 for t in ctemps if t < 100}
+
+## Set comprehension
+sTemp = "The quick brown fox jumped over the lazy dog"
+chars = {c.upper() for c in sTemp if not c.isspace()}
+```
+</td>
+</tr>
 </table>
 
 
