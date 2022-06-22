@@ -8,14 +8,14 @@ these concepts.
 - [x] 2 - Builtin Functions
 - [x] 3 - Functions
 - [x] 4 - Collections
-- [ ] 5 - Classes
+- [x] 5 - Classes
 - [ ] 6 - Logging
 - [ ] 7 - Comprehensions
 ___
 ## Contents 
 1. [Theory](#theory-)
 2. [Best Practice](#best-practice-)
-3. [Python Concepts and When To Use Them](#python-concepts-and-when-to-use-them)
+3. [Python Concepts and When To Use Them](#python-concepts-and-when-to-use-them-)
 
 ___
 
@@ -465,6 +465,156 @@ def main():
       # Use popitem to remove the top item
       tm, wl = teams.popitem(False)
       print("Top team: ", tm, wl)
+```
+</td>
+</tr>
+<tr>
+<td> Object Comparison Operators </td>
+<td>Use special methods to compare objects to each other</td>
+<td>
+<ul>
+<li> If your class object needs comparison operations you can override the inbuilt operations to be compatible </li>
+<li> By doing this we establish an order in our object instances</li>
+<li> This means when we use sort methods, it utilises the overridden comparators.</li>
+</ul>
+
+
+</td>
+<td>
+
+```python
+      def __ge__(self, other):
+        if self.level == other.level:
+            return self.seniority >= other.seniority
+        return self.level >= other.level
+
+    def __gt__(self, other):
+        if self.level == other.level:
+            return self.seniority > other.seniority
+        return self.level > other.level
+
+    def __lt__(self, other):
+        if self.level == other.level:
+            return self.seniority < other.seniority
+        return self.level < other.level
+```
+</td>
+</tr>
+<tr>
+<td>  __getattr__ </td>
+<td> Customise string representations of objects</td>
+<td> 
+Extend the features that your class supports and provide a way to reuse existing attributes in new ways
+</td>
+<td>
+
+```python
+  def __init__(self):
+        self.red = 50
+        self.green = 75
+        self.blue = 100
+
+    # use getattr to dynamically return a value
+    def __getattr__(self, attr):
+        if attr == "rgbcolor":
+            return (self.red, self.green, self.blue)
+        elif attr == "hexcolor":
+            return "#{0:02x}{1:02x}{2:02x}".format(self.red, self.green, self.blue)
+        else:
+            raise AttributeError
+
+    # use setattr to dynamically return a value
+    def __setattr__(self, attr, val):
+        if attr == "rgbcolor":
+            self.red = val[0]
+            self.green = val[1]
+            self.blue = val[2]
+        else:
+            super().__setattr__(attr, val)
+```
+</td>
+</tr>
+<tr>
+<td>  enum </td>
+<td> Data type consisting of a set of named values. The enumerator names are identifiers that behave as constants.</td>
+<td> 
+Easy to understand and maintain. Constant values, not mutable like with namedtuples.
+</td>
+<td>
+
+```python
+from enum import Enum, unique, auto
+
+
+@unique
+class Fruit(Enum):
+    # NAME = VALUE
+    # can access this using Class.NAME.name -> to get 'NAME'
+    # and Class.Name.value -> to get 'VALUE'
+    # Duplicate names are not okay, duplicate values are
+    # You can prevent duplicate values by importing the 'unique' decorator and adding it to the class
+    # If you don't care about the values you can import the auto package from enum which will automatically create one
+    APPLE = 1
+    BANANA = 2
+    ORANGE = 3
+    TOMATO = 4
+    PEAR = auto()
+
+
+def main():
+    # enums have human-readable values and types
+    print(Fruit.APPLE)
+    print(type(Fruit.APPLE))
+    print(repr(Fruit.APPLE))  # gets a string representation of the object
+
+    # enums have name and value properties
+    print(Fruit.APPLE.name, Fruit.APPLE.value)
+
+    # print the auto-generated value
+    print(Fruit.PEAR.value)  # Value is 5 which increments from the other values
+       
+```
+</td>
+</tr>
+<tr>
+<td> Numerical Operators </td>
+<td>Use special methods to give objects number-like behaviour</td>
+<td> 
+If your class object needs numeric operations you can override mathematical operations to be compatible
+</td>
+<td>
+
+```python
+class Point():
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def __repr__(self):
+        return "<Point x:{0},y:{1}>".format(self.x, self.y)
+
+    # implement addition
+    def __add__(self, other):
+        return Point(self.x + other.x, self.y + other.y)
+
+    # implement subtraction
+    def __sub__(self, other):
+        return Point(self.x - other.x, self.y - other.y)
+
+
+def main():
+    # Declare some points
+    p1 = Point(10, 20)
+    p2 = Point(30, 30)
+    print(p1, p2)
+
+    # Add two points
+    p3 = p1 + p2
+    print(p3)
+
+    # subtract two points
+    p4 = p2 - p1
+    print(p4)
 ```
 </td>
 </tr>

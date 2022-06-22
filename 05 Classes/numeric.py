@@ -1,4 +1,4 @@
-# give objects number-like behavior
+# give objects number-like behaviour
 # If your class object needs numeric operations you can override mathematical operations to be compatible
 
 class Point():
