@@ -9,7 +9,7 @@ these concepts.
 - [x] 3 - Functions
 - [x] 4 - Collections
 - [x] 5 - Classes
-- [ ] 6 - Logging
+- [x] 6 - Logging
 - [ ] 7 - Comprehensions
 ___
 ## Contents 
@@ -615,6 +615,66 @@ def main():
     # subtract two points
     p4 = p2 - p1
     print(p4)
+```
+</td>
+</tr>
+<tr>
+<td> Logging </td>
+<td>Log problems or statements</td>
+<td> 
+...If you need logging
+</td>
+<td>
+
+```python
+# use the built-in logging module
+import logging
+
+
+def main():
+    # Use basicConfig to configure logging
+    # this is only executed once, subsequent calls to
+    # basicConfig will have no effect
+    logging.basicConfig(level=logging.DEBUG,
+                        filemode="w",
+                        filename="output.log")
+
+    # Try out each of the log levels
+    logging.debug("This is a debug-level log message")  # Diagnostic information useful for debugging
+    logging.info("This is an info-level log message")  # General info about execution results
+    logging.warning("This is a warning-level message")  # Something unexpected, or an approaching problem
+    logging.error("This is an error-level message")  # Unable to perform a specific operation due to a problem
+    logging.critical("This is a critical-level message")  # Program may not be able to continue, serious error
+
+#### CUSTOMISED LOGGING
+import logging
+
+extData = {'user': 'joem@example.com'}
+
+
+def anotherFunction():
+    logging.debug("This is a debug-level log message", extra=extData)
+
+
+def main():
+    # set the output file and debug level, and
+    # use a custom formatting specification
+    # asctime - Human readable date format when the log record was created
+    # filename/functioname - file/function where the log message originated
+    # levelname/levelno - String/Numeric representation of the message level (DEBUG, INFO etc.)
+    # lineno - Source line number where the logging call was issued (if applicable)
+    # message - The logged message string itself
+    fmtStr = "%(asctime)s: %(levelname)s: %(funcName)s Line:%(lineno)d User:%(user)s %(message)s"
+    dateStr = "%m/%d/%Y %I:%M:%S %p"
+    logging.basicConfig(filename="output.log",
+                        level=logging.DEBUG,
+                        format=fmtStr,
+                        datefmt=dateStr)
+
+    # extData string passed in through below method to access data through the keys
+    logging.info("This is an info-level log message", extra=extData)
+    logging.warning("This is a warning-level message", extra=extData)
+    anotherFunction()
 ```
 </td>
 </tr>
