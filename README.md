@@ -2,6 +2,9 @@
 This markdown file serves to summarise and finalise the understanding of
 the concepts I've gained in this course. Next steps after finishing this, will be completing challenges utilising
 these concepts.
+
+### Outstanding Question
+> What actually is the benefit of using a lambda function over a comprehension?
 ___
 ## Contents 
 1. [Theory](#theory-)
