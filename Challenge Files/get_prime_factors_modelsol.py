@@ -1,7 +1,7 @@
 def get_prime_factors(num):
     factors = list()
     divisor = 2
-    while(divisor <= num):
+    while (divisor <= num):
         if (num % divisor) == 0:
             factors.append(divisor)
             num /= divisor
@@ -11,3 +11,7 @@ def get_prime_factors(num):
 
 
 print(get_prime_factors(36))
+
+### REFLECTION ###
+# More simple solution was out there
+# Although it seems more tiresome, has a better complexity
