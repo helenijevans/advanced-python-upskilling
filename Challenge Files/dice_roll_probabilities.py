@@ -19,7 +19,7 @@ def roll_dice(*args):
 
     print(myTable)
 
-roll_dice(20, 6, 4)
+roll_dice(6,6)
 
 """
 GIVEN SOLUTION
