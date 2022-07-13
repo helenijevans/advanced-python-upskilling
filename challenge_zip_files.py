@@ -32,6 +32,6 @@ def zip_all(search_dir, extension_list, output_path):
 
 ## REFLECTION
 # Solutions quite similar, I adapted the requirements of the function as there seemed to be parameter redundancy
-# Could have just been that the summary wasn't adequate at describing what needed to happen in this function.
+# Could have just been that the summary wasn't adequate at describing desired functionality in this function.
 # For example, I always assumed relative path, and the given solution doesn't and then does a conversion
 

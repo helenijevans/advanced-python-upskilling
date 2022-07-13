@@ -18,3 +18,26 @@ def get_prime_factors(num):
     return prime_factors
 
 print(get_prime_factors(360))
+
+"""
+GIVEN SOLUTION
+"""
+def get_prime_factors(num):
+    factors = list()
+    divisor = 2
+    while (divisor <= num):
+        if (num % divisor) == 0:
+            factors.append(divisor)
+            num /= divisor
+        else:
+            divisor += 1
+    return factors
+
+
+print(get_prime_factors(36))
+
+### REFLECTION ###
+# More simple solution was out there
+# Although it feels very much brute force it does has a better complexity
+# I was trying to be very efficient from the get go and that actually hindered the complexity
+# by working in a way to abstract functionality
