@@ -8,7 +8,6 @@ romInt = {
     "M": 1000
 }
 
-#Assuming inputs of 1000 and under
 
 def romanToInt(s: str) -> int:
     total = 0
@@ -26,7 +25,7 @@ def romanToInt(s: str) -> int:
     return total
 
 
-# print(romanToInt("LM"))
+# print(romanToInt("CC"))
 
 
 
@@ -55,5 +54,5 @@ def intToRoman(i: int) -> str:
     left = (i - romanToInt(result))
     return result + intToRoman(left)
 
-print(intToRoman(45))
+print(intToRoman(2024))
 
