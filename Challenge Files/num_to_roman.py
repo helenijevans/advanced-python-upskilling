@@ -33,7 +33,7 @@ intRom = dict((v, k) for k, v in romInt.items())
 
 def intToRoman(i: int) -> str:
     base = 1
-    if i == 0:
+    if i <= 0:
         return ""
     if i in intRom:
         result = intRom.get(i)
@@ -41,8 +41,14 @@ def intToRoman(i: int) -> str:
     length = len(str(i))
     potentialMax = base*10**length
     subtractive = base*10**(length-1)
+    maxConversion = romInt.get(list(romInt)[-1])
 
-    if str(i)[0] == str(potentialMax - subtractive)[0]:
+    if potentialMax > maxConversion:
+        result = ""
+        repeat = i // maxConversion
+        for _ in range(repeat):
+            result += intRom.get(maxConversion)
+    elif str(i)[0] == str(potentialMax - subtractive)[0]:
         result = intRom.get(subtractive) + intRom.get(potentialMax)
     elif potentialMax/2 < i < potentialMax:
         result = intRom.get(potentialMax/2)
@@ -54,5 +60,5 @@ def intToRoman(i: int) -> str:
     left = (i - romanToInt(result))
     return result + intToRoman(left)
 
-print(intToRoman(2024))
+print(intToRoman(1500))
 
